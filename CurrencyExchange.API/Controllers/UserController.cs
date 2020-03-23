@@ -3,9 +3,7 @@
     using System.Collections.Generic;
     using Microsoft.AspNetCore.Mvc;
 
-    [Route("api/[controller]")]
-    [ApiController]
-    public class UserController : ControllerBase
+    public class UserController : ApiControllerBase
     {
         [HttpGet]
         public IEnumerable<string> Get()
