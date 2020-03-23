@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-
-namespace CurrencyExchange.API.Controllers
+﻿namespace CurrencyExchange.API.Controllers
 {
+    using System.Collections.Generic;
+    using Microsoft.AspNetCore.Mvc;
+
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -24,18 +20,21 @@ namespace CurrencyExchange.API.Controllers
         }
 
         [HttpPost]
-        public void Post([FromBody] string value)
+        public OkResult Post([FromBody] string value)
         {
+            return Ok();
         }
 
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public OkResult Put(int id, [FromBody] string value)
         {
+            return Ok();
         }
 
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public OkResult Delete(int id)
         {
+            return Ok();
         }
     }
 }

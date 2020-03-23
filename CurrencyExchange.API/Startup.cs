@@ -24,7 +24,8 @@
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
-                    Title = "Currency Exchange API", Version = "v1"
+                    Title = "Currency Exchange API",
+                    Version = "v1"
                 });
             });
         }
@@ -46,7 +47,7 @@
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Currency Exchange API");
+                c.SwaggerEndpoint("../swagger/v1/swagger.json", "Currency Exchange API");
                 c.RoutePrefix = string.Empty;
             });
 
