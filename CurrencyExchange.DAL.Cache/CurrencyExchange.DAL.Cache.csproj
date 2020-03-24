@@ -5,8 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Collections.Concurrent" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CurrencyExchange.DAL\CurrencyExchange.DAL.csproj" />
-    <ProjectReference Include="..\CurrencyExchange.Model\CurrencyExchange.Model.csproj" />
   </ItemGroup>
 
 </Project>
