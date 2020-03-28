@@ -1,5 +1,6 @@
 ﻿namespace CurrencyExchange.API
 {
+    using CurrencyExchange.API.Extensions;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
@@ -24,6 +25,8 @@
             {
                 options.LowercaseUrls = true;
             });
+
+            services.AddCurrencyExchange();
 
             services.AddSwaggerGen(c =>
             {
