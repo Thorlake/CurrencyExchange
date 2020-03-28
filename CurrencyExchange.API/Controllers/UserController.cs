@@ -1,38 +1,60 @@
 ﻿namespace CurrencyExchange.API.Controllers
 {
+    using System;
     using System.Collections.Generic;
+    using AutoMapper;
+    using CurrencyExchange.API.Dto.Requests.User;
+    using CurrencyExchange.API.Dto.Responses.User;
+    using CurrencyExchange.BLL.Abstractions.Services.Args;
+    using CurrencyExchange.BLL.Services;
     using Microsoft.AspNetCore.Mvc;
 
     public class UserController : ApiControllerBase
     {
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly IMapper _mapper;
+        private readonly IUserService _userService;
+
+        public UserController(
+            IMapper mapper,
+            IUserService userService)
         {
-            return new string[] { "value1", "value2" };
+            _userService = userService;
+            _mapper = mapper;
         }
 
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet]
+        public IEnumerable<UserResponse> Get()
         {
-            return "value";
+            var users = _userService.Get();
+            return _mapper.MapMany<UserResponse>(users);
+        }
+
+        [HttpGet("{id}")]
+        public UserResponse Get(Guid id)
+        {
+            var user = _userService.GetById(id);
+            return _mapper.Map<UserResponse>(user);
         }
 
         [HttpPost]
-        public OkResult Post([FromBody] string value)
+        public UserResponse Create(CreateUserRequest model)
         {
-            return Ok();
+            var args = _mapper.Map<CreateUserArgs>(model);
+            var user = _userService.Add(args);
+            return _mapper.Map<UserResponse>(user);
         }
 
         [HttpPut("{id}")]
-        public OkResult Put(int id, [FromBody] string value)
+        public UserResponse Update(Guid id, [FromBody] string value)
         {
-            return Ok();
+            return null;
         }
 
         [HttpDelete("{id}")]
-        public OkResult Delete(int id)
+        public NoContentResult Delete(Guid id)
         {
-            return Ok();
+            _userService.Remove(id);
+            return NoContent();
         }
     }
 }
