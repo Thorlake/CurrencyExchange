@@ -7,13 +7,19 @@
     public interface IRepository<T>
         where T : class, IEntity
     {
-        T GetById(Guid id);
-
-        T FirstOrDefault(Guid id);
+        // queries
 
         List<T> Get();
 
+        T GetBy(Guid id);
+
+        T FirstOrDefault(Guid id);
+
+        // commands
+
         T Add(T item);
+
+        T Update(T item);
 
         void Remove(T item);
 

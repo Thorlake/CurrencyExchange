@@ -2,7 +2,8 @@
 {
     using CurrencyExchange.Model.Abstractions;
 
-    public interface IWalletRepository : IRepository<IWallet>
+    public interface ICurrencyRepository : IRepository<ICurrency>
     {
+        ICurrency GetBy(string code);
     }
 }

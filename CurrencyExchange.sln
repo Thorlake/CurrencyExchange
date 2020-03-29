@@ -18,13 +18,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Rules.ruleset = Rules.ruleset
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyExchange.DAL", "CurrencyExchange.DAL\CurrencyExchange.DAL.csproj", "{F13B56E6-232A-4B88-BCD2-834B0DDED9FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrencyExchange.DAL", "CurrencyExchange.DAL\CurrencyExchange.DAL.csproj", "{F13B56E6-232A-4B88-BCD2-834B0DDED9FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyExchange.DAL.EntityFramework", "CurrencyExchange.DAL.EntityFramework\CurrencyExchange.DAL.EntityFramework.csproj", "{E1080DC8-D1AF-4C52-BEEA-C3175436F7F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrencyExchange.DAL.EntityFramework", "CurrencyExchange.DAL.EntityFramework\CurrencyExchange.DAL.EntityFramework.csproj", "{E1080DC8-D1AF-4C52-BEEA-C3175436F7F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyExchange.DAL.Cache", "CurrencyExchange.DAL.Cache\CurrencyExchange.DAL.Cache.csproj", "{19CB3A32-439B-49E2-8F12-CDB6EA48CA16}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrencyExchange.Model", "CurrencyExchange.Model\CurrencyExchange.Model.csproj", "{F7228722-C76F-4152-B0E2-353074B33876}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyExchange.Model", "CurrencyExchange.Model\CurrencyExchange.Model.csproj", "{F7228722-C76F-4152-B0E2-353074B33876}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrencyExchange.DAL.Nhibernate", "CurrencyExchange.DAL.Nhibernate\CurrencyExchange.DAL.Nhibernate.csproj", "{4E1658F6-ACF2-40BF-9F3D-8FF36F4F35C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyExchange.DAL.EntityFramework.SqlServer", "CurrencyExchange.DAL.EntityFramework.SqlServer\CurrencyExchange.DAL.EntityFramework.SqlServer.csproj", "{16D9749F-E24E-422A-9D19-FA445D467D1A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,14 +50,18 @@ Global
 		{E1080DC8-D1AF-4C52-BEEA-C3175436F7F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1080DC8-D1AF-4C52-BEEA-C3175436F7F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1080DC8-D1AF-4C52-BEEA-C3175436F7F4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{19CB3A32-439B-49E2-8F12-CDB6EA48CA16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{19CB3A32-439B-49E2-8F12-CDB6EA48CA16}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{19CB3A32-439B-49E2-8F12-CDB6EA48CA16}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{19CB3A32-439B-49E2-8F12-CDB6EA48CA16}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F7228722-C76F-4152-B0E2-353074B33876}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F7228722-C76F-4152-B0E2-353074B33876}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7228722-C76F-4152-B0E2-353074B33876}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7228722-C76F-4152-B0E2-353074B33876}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E1658F6-ACF2-40BF-9F3D-8FF36F4F35C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E1658F6-ACF2-40BF-9F3D-8FF36F4F35C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E1658F6-ACF2-40BF-9F3D-8FF36F4F35C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E1658F6-ACF2-40BF-9F3D-8FF36F4F35C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16D9749F-E24E-422A-9D19-FA445D467D1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16D9749F-E24E-422A-9D19-FA445D467D1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16D9749F-E24E-422A-9D19-FA445D467D1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16D9749F-E24E-422A-9D19-FA445D467D1A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,7 +70,8 @@ Global
 		{2614FFD5-BDF3-4488-BBA5-3A9A72359F8B} = {3817A87D-24C4-442C-A075-2E9A9DFD0FF6}
 		{F13B56E6-232A-4B88-BCD2-834B0DDED9FC} = {910E2935-2D97-4EF4-B6F4-D9E8892D67A4}
 		{E1080DC8-D1AF-4C52-BEEA-C3175436F7F4} = {910E2935-2D97-4EF4-B6F4-D9E8892D67A4}
-		{19CB3A32-439B-49E2-8F12-CDB6EA48CA16} = {910E2935-2D97-4EF4-B6F4-D9E8892D67A4}
+		{4E1658F6-ACF2-40BF-9F3D-8FF36F4F35C7} = {910E2935-2D97-4EF4-B6F4-D9E8892D67A4}
+		{16D9749F-E24E-422A-9D19-FA445D467D1A} = {910E2935-2D97-4EF4-B6F4-D9E8892D67A4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {71314832-F746-48B0-8081-1B47382D9AFC}
