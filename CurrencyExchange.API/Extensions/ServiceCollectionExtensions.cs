@@ -5,6 +5,7 @@
     using CurrencyExchange.API.Settings;
     using CurrencyExchange.BLL.Abstractions.Services;
     using CurrencyExchange.BLL.Services;
+    using CurrencyExchange.BLL.Services.JobService;
     using CurrencyExchange.DAL;
     using CurrencyExchange.DAL.EntityFramework.Abstraction;
     using CurrencyExchange.DAL.EntityFramework.SqlServer;
@@ -21,7 +22,9 @@
                {
                    cfg.AllowNullCollections = true;
                },
-                typeof(Mappings.UserRequestProfile)
+                typeof(Mappings.UserRequestProfile),
+                typeof(BLL.Mappings.UserWalletProfile),
+                typeof(DAL.EntityFramework.Mappings.EntitiesProfile)
             );
 
             services.AddDbContext();
@@ -40,7 +43,7 @@
             databaseSettings.MatchProvider(
                 msSql: () =>
                 {
-                    services.AddDbContext<IEfDbContext, SqlServerDbContext>(opt =>
+                    return services.AddDbContext<IEfDbContext, SqlServerDbContext>(opt =>
                     {
                         opt.UseSqlServer(connectionStrings.Api);
                     });
@@ -55,9 +58,10 @@
         private static void AddBLLServices(
             this IServiceCollection services)
         {
-            services.AddScoped<IUserService, UserService>();
-            services.AddScoped<IUserWalletService, UserWalletService>();
-            services.AddScoped<ICurrencyRateService, CurrencyRateService>();
+            services.TryAddScoped<IUserService, UserService>();
+            services.TryAddScoped<IUserWalletService, UserWalletService>();
+            services.TryAddScoped<ICurrencyRateService, CurrencyRateService>();
+            services.TryAddScoped<IJobService, JobService>();
         }
     }
 }

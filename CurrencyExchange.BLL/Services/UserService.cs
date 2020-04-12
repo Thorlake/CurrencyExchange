@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using CurrencyExchange.BLL.Abstractions.Services;
     using CurrencyExchange.BLL.Abstractions.Services.Args;
     using CurrencyExchange.DAL;
     using CurrencyExchange.Model.Abstractions;
@@ -10,8 +11,7 @@
     {
         private readonly IDbContext _context;
 
-        public UserService(
-           IDbContext context)
+        public UserService(IDbContext context)
         {
             _context = context;
         }
@@ -21,19 +21,15 @@
             return _context.Users.Get();
         }
 
-        public IUser GetById(Guid id)
+        public IUser GetBy(Guid id)
         {
-            return _context.Users.GetById(id);
+            return _context.Users.GetBy(id);
         }
 
-        public IUser Add(CreateUserArgs user)
+        public IUser Add(UserCreateArgs args)
         {
+            IUser user = args;
             return _context.Users.Add(user);
-        }
-
-        public void UpdateAmount(Guid id)
-        {
-            // Method intentionally left empty.
         }
 
         public void Remove(Guid id) => _context.Users.Remove(id);

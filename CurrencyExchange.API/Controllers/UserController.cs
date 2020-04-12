@@ -5,8 +5,8 @@
     using AutoMapper;
     using CurrencyExchange.API.Dto.Requests.User;
     using CurrencyExchange.API.Dto.Responses.User;
+    using CurrencyExchange.BLL.Abstractions.Services;
     using CurrencyExchange.BLL.Abstractions.Services.Args;
-    using CurrencyExchange.BLL.Services;
     using Microsoft.AspNetCore.Mvc;
 
     public class UserController : ApiControllerBase
@@ -32,14 +32,14 @@
         [HttpGet("{id}")]
         public UserResponse Get(Guid id)
         {
-            var user = _userService.GetById(id);
+            var user = _userService.GetBy(id);
             return _mapper.Map<UserResponse>(user);
         }
 
         [HttpPost]
-        public UserResponse Create(CreateUserRequest model)
+        public UserResponse Create(UserCreateRequest model)
         {
-            var args = _mapper.Map<CreateUserArgs>(model);
+            var args = _mapper.Map<UserCreateArgs>(model);
             var user = _userService.Add(args);
             return _mapper.Map<UserResponse>(user);
         }
@@ -48,6 +48,15 @@
         public UserResponse Update(Guid id, [FromBody] string value)
         {
             return null;
+        }
+
+        // account operations
+
+        [HttpGet("{id}/exchange")]
+        public IActionResult Exchange(Guid id, UserExchangeRequest model)
+        {
+            //_userService.
+            return Ok();
         }
 
         [HttpDelete("{id}")]

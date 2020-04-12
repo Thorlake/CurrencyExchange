@@ -1,4 +1,4 @@
-﻿namespace CurrencyExchange.BLL.Services
+﻿namespace CurrencyExchange.BLL.Abstractions.Services
 {
     using System;
     using System.Collections.Generic;
@@ -11,13 +11,11 @@
 
         IReadOnlyCollection<IUser> Get();
 
-        IUser GetById(Guid id);
+        IUser GetBy(Guid id);
 
         // commands
 
-        IUser Add(CreateUserArgs user);
-
-        void UpdateAmount(Guid id);
+        IUser Add(UserCreateArgs args);
 
         void Remove(Guid id);
     }

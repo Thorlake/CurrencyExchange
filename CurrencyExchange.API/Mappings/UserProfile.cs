@@ -10,7 +10,7 @@
     {
         public UserRequestProfile()
         {
-            CreateMap<CreateUserRequest, CreateUserArgs>();
+            CreateMap<UserCreateRequest, UserCreateArgs>();
         }
     }
 
