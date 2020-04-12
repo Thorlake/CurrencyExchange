@@ -1,6 +1,9 @@
 ﻿namespace CurrencyExchange.API
 {
     using CurrencyExchange.API.Extensions;
+    using CurrencyExchange.API.Helpers;
+    using CurrencyExchange.API.Settings;
+    using Hangfire;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
@@ -19,6 +22,9 @@
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.ConfigureAndBind<DatabaseSettings>(Configuration.GetSection("Database"));
+            services.ConfigureAndBind<ConnectionStrings>(Configuration.GetSection("ConnectionStrings"));
+
             services.AddControllers();
 
             services.AddRouting(options =>
@@ -52,7 +58,15 @@
 
             app.UseRouting();
 
+            // auth
+
             app.UseAuthorization();
+
+            // Database
+
+            app.MigrateDatabase();
+
+            // swagger
 
             app.UseSwagger();
             app.UseSwaggerUI(c =>
@@ -60,6 +74,14 @@
                 c.SwaggerEndpoint("../swagger/v1/swagger.json", "Currency Exchange API");
                 c.RoutePrefix = string.Empty;
             });
+
+            // hangfire
+
+            app.UseHangfire();
+            if (!env.IsProduction())
+            {
+                app.UseHangfireDashboard();
+            }
 
             app.UseEndpoints(endpoints =>
             {
