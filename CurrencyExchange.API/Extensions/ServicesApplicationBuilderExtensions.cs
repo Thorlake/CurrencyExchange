@@ -1,5 +1,6 @@
 ﻿namespace CurrencyExchange.API.Extensions
 {
+    using CurrencyExchange.DAL;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.Extensions.DependencyInjection;
 
@@ -13,21 +14,11 @@
 
             using (serviceScope)
             {
-                ////var context = serviceScope.ServiceProvider.GetService<IDbContext>();
-                //////context.Database.Migrate();
+                var context = serviceScope.ServiceProvider.GetService<IDbContext>();
+                context.Migrate();
             }
 
             return app;
         }
-
-        ////public static IApplicationBuilder MigrateDatabase(this IApplicationBuilder app, DatabaseSettings settings)
-        ////{
-        ////    settings.MatchProvider(
-        ////        mssql: () => Database.SetInitializer(new MigrateDatabaseToLatestVersion<SqlServerPamDbContext, MsSqlConfig>(true)),
-        ////        pgsql: () => Database.SetInitializer(new MigrateDatabaseToLatestVersion<PostgreSqlPamDbContext, PgSqlConfig>(true))
-        ////    );
-
-        ////    return app;
-        ////}
     }
 }

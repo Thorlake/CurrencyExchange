@@ -28,6 +28,8 @@
 
             services.AddCurrencyExchange();
 
+            services.AddHangfire();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
