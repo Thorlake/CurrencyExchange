@@ -36,29 +36,6 @@
         }
 
         // commands
-
-        public IUserWallet Withdrawal(UserWalletWithdrawalArgs args)
-        {
-            if (args.Amount <= 0)
-            {
-                throw new ArgumentException("Amount of money has to be greater than 0");
-            }
-
-            var userWallet = _context.UserWallets.Get(args.UserId, args.CurrencyId);
-            if (userWallet == null)
-            {
-                throw new ArgumentException($"Currency {args.CurrencyId} does not exist");
-            }
-            if (userWallet.Balance < args.Amount)
-            {
-                throw new ArgumentException($"Not enough money in your wallet. Available balance: {userWallet.Balance}");
-            }
-
-            userWallet.Balance -= args.Amount;
-            _context.UserWallets.Update(userWallet);
-            return userWallet;
-        }
-
         public IUserWallet Deposit(UserWalletDepositArgs args)
         {
             if (args.Amount < 0)
@@ -90,6 +67,28 @@
                 _context.UserWallets.Update(userWallet);
             }
 
+            return userWallet;
+        }
+
+        public IUserWallet Withdrawal(UserWalletWithdrawalArgs args)
+        {
+            if (args.Amount <= 0)
+            {
+                throw new ArgumentException("Amount of money has to be greater than 0");
+            }
+
+            var userWallet = _context.UserWallets.Get(args.UserId, args.CurrencyId);
+            if (userWallet == null)
+            {
+                throw new ArgumentException($"Currency {args.CurrencyId} does not exist");
+            }
+            if (userWallet.Balance < args.Amount)
+            {
+                throw new ArgumentException($"Not enough money in your wallet. Available balance: {userWallet.Balance}");
+            }
+
+            userWallet.Balance -= args.Amount;
+            _context.UserWallets.Update(userWallet);
             return userWallet;
         }
 
@@ -128,6 +127,6 @@
             }
         }
 
-        public void Remove(Guid id) => _context.Users.Remove(id);
+        public void Remove(Guid id) => _context.UserWallets.Remove(id);
     }
 }

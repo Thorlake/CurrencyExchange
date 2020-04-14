@@ -20,5 +20,7 @@
         IUserWallet Deposit(UserWalletDepositArgs args);
 
         void Exchange(UserWalletExchangeArgs args);
+
+        void Remove(Guid id);
     }
 }

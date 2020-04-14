@@ -9,7 +9,7 @@
     using CurrencyExchange.BLL.Abstractions.Services.Args;
     using Microsoft.AspNetCore.Mvc;
 
-    public class UserController : ApiControllerBase
+    public partial class UserController : ApiControllerBase
     {
         private readonly IMapper _mapper;
         private readonly IUserService _userService;
@@ -42,21 +42,6 @@
             var args = _mapper.Map<UserCreateArgs>(model);
             var user = _userService.Add(args);
             return _mapper.Map<UserResponse>(user);
-        }
-
-        [HttpPut("{id}")]
-        public UserResponse Update(Guid id, [FromBody] string value)
-        {
-            return null;
-        }
-
-        // account operations
-
-        [HttpGet("{id}/exchange")]
-        public IActionResult Exchange(Guid id, UserExchangeRequest model)
-        {
-            //_userService.
-            return Ok();
         }
 
         [HttpDelete("{id}")]
