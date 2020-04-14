@@ -9,6 +9,7 @@
     using CurrencyExchange.BLL.Abstractions.Services.Args;
     using Microsoft.AspNetCore.Mvc;
 
+    [Route("users")]
     public partial class UserController : ApiControllerBase
     {
         private readonly IMapper _mapper;
@@ -30,7 +31,7 @@
         }
 
         [HttpGet("{id}")]
-        public UserResponse Get(Guid id)
+        public UserResponse GetBy(Guid id)
         {
             var user = _userService.GetBy(id);
             return _mapper.Map<UserResponse>(user);
