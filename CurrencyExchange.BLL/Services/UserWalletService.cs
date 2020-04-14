@@ -80,7 +80,7 @@
             var userWallet = _context.UserWallets.Get(args.UserId, args.CurrencyId);
             if (userWallet == null)
             {
-                throw new ArgumentException($"Currency {args.CurrencyId} does not exist");
+                throw new ArgumentException($"Wallet with currency {args.CurrencyId} does not exist");
             }
             if (userWallet.Balance < args.Amount)
             {
@@ -113,14 +113,11 @@
 
             using (var transaction = _context.BeginTransaction())
             {
-                var convertAmount = args.Amount * fromCurrency.Rate / toCurrency.Rate;
-
                 var withdrawalArgs = _mapper.Map<UserWalletWithdrawalArgs>(args);
-                withdrawalArgs.Amount = convertAmount;
                 Withdrawal(withdrawalArgs);
 
                 var depositArgs = _mapper.Map<UserWalletDepositArgs>(args);
-                depositArgs.Amount = convertAmount;
+                depositArgs.Amount = args.Amount * (toCurrency.Rate / fromCurrency.Rate);
                 Deposit(depositArgs);
 
                 transaction.Commit();
