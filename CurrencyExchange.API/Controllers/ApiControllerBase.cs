@@ -4,6 +4,7 @@
 
     [ApiController]
     [Route("[controller]")]
+    [ApiConventionType(typeof(ApiConventions))]
     public abstract class ApiControllerBase : ControllerBase
     {
     }
