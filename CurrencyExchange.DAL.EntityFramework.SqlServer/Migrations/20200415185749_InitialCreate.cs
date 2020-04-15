@@ -13,7 +13,7 @@
                 {
                     Id = table.Column<Guid>(nullable: false),
                     Code = table.Column<string>(nullable: false),
-                    Rate = table.Column<decimal>(nullable: false)
+                    Rate = table.Column<decimal>(type: "decimal(19, 4)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -64,8 +64,8 @@
 #pragma warning disable SA1118 // Parameter should not span multiple lines
                 values: new object[,]
                 {
-                    { new Guid("c484f6bc-468e-4a0b-817c-ff477bd23163"), "RUB", 0m },
-                    { new Guid("ef74e200-991d-4650-ab29-89372936184b"), "KRW", 0m }
+                    { new Guid("3d4d4786-4cc0-4f2b-ac1a-4b0158d65922"), "RUB", 0m },
+                    { new Guid("521cf211-eb99-4889-b3b6-ac94c34b5e13"), "KRW", 0m }
                 });
 
             migrationBuilder.InsertData(
@@ -73,20 +73,20 @@
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
-                    { new Guid("e5656688-c359-4ed9-86a7-fe78d967c616"), "User A" },
-                    { new Guid("8d21a257-6623-45ee-aa20-3e02865bfb20"), "User B" }
+                    { new Guid("eedced01-3e38-4762-b9fd-91dea1daef6a"), "User A" },
+                    { new Guid("d1ec617b-6266-44ff-9fce-864d057dc108"), "User B" }
                 });
 #pragma warning restore SA1118 // Parameter should not span multiple lines
 
             migrationBuilder.InsertData(
                 table: "UserWallets",
                 columns: new[] { "Id", "Balance", "CurrencyId", "UserId" },
-                values: new object[] { new Guid("9f89b9da-acc3-4a88-9960-214b37a574fe"), 0m, new Guid("c484f6bc-468e-4a0b-817c-ff477bd23163"), new Guid("e5656688-c359-4ed9-86a7-fe78d967c616") });
+                values: new object[] { new Guid("782de4d7-25e1-49ad-96b2-f9c9e9c10daa"), 0m, new Guid("3d4d4786-4cc0-4f2b-ac1a-4b0158d65922"), new Guid("eedced01-3e38-4762-b9fd-91dea1daef6a") });
 
             migrationBuilder.InsertData(
                 table: "UserWallets",
                 columns: new[] { "Id", "Balance", "CurrencyId", "UserId" },
-                values: new object[] { new Guid("ab0e3d97-dcda-494a-b79e-802f6363d552"), 0m, new Guid("ef74e200-991d-4650-ab29-89372936184b"), new Guid("8d21a257-6623-45ee-aa20-3e02865bfb20") });
+                values: new object[] { new Guid("51649174-7433-45bd-bbe3-81d25705a5c0"), 0m, new Guid("521cf211-eb99-4889-b3b6-ac94c34b5e13"), new Guid("d1ec617b-6266-44ff-9fce-864d057dc108") });
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserWallets_CurrencyId",

@@ -39,6 +39,7 @@
 
         private void SeedData(ModelBuilder modelBuilder)
         {
+            // Rate will be updated later
             (Guid currencyRubId, Guid currencyUsdId) currencyGuids = (Guid.NewGuid(), Guid.NewGuid());
             modelBuilder.Entity<Currency>().HasData(
                 new Currency[]
@@ -100,6 +101,10 @@
                 .ValueGeneratedOnAdd();
             modelBuilder.Entity<Currency>()
                 .Property(u => u.Code)
+                .IsRequired();
+            modelBuilder.Entity<Currency>()
+                .Property(u => u.Rate)
+                .HasColumnType("decimal(19, 4)")
                 .IsRequired();
             modelBuilder.Entity<Currency>()
                 .HasMany(c => c.UserWallets)

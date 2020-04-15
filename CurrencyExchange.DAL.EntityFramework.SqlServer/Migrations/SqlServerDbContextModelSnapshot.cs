@@ -30,7 +30,7 @@ namespace CurrencyExchange.DAL.EntityFramework.SqlServer.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Rate")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(19, 4)");
 
                     b.HasKey("Id");
 
@@ -39,13 +39,13 @@ namespace CurrencyExchange.DAL.EntityFramework.SqlServer.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("c484f6bc-468e-4a0b-817c-ff477bd23163"),
+                            Id = new Guid("3d4d4786-4cc0-4f2b-ac1a-4b0158d65922"),
                             Code = "RUB",
                             Rate = 0m
                         },
                         new
                         {
-                            Id = new Guid("ef74e200-991d-4650-ab29-89372936184b"),
+                            Id = new Guid("521cf211-eb99-4889-b3b6-ac94c34b5e13"),
                             Code = "KRW",
                             Rate = 0m
                         });
@@ -67,12 +67,12 @@ namespace CurrencyExchange.DAL.EntityFramework.SqlServer.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("e5656688-c359-4ed9-86a7-fe78d967c616"),
+                            Id = new Guid("eedced01-3e38-4762-b9fd-91dea1daef6a"),
                             Name = "User A"
                         },
                         new
                         {
-                            Id = new Guid("8d21a257-6623-45ee-aa20-3e02865bfb20"),
+                            Id = new Guid("d1ec617b-6266-44ff-9fce-864d057dc108"),
                             Name = "User B"
                         });
                 });
@@ -103,17 +103,17 @@ namespace CurrencyExchange.DAL.EntityFramework.SqlServer.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("9f89b9da-acc3-4a88-9960-214b37a574fe"),
+                            Id = new Guid("782de4d7-25e1-49ad-96b2-f9c9e9c10daa"),
                             Balance = 0m,
-                            CurrencyId = new Guid("c484f6bc-468e-4a0b-817c-ff477bd23163"),
-                            UserId = new Guid("e5656688-c359-4ed9-86a7-fe78d967c616")
+                            CurrencyId = new Guid("3d4d4786-4cc0-4f2b-ac1a-4b0158d65922"),
+                            UserId = new Guid("eedced01-3e38-4762-b9fd-91dea1daef6a")
                         },
                         new
                         {
-                            Id = new Guid("ab0e3d97-dcda-494a-b79e-802f6363d552"),
+                            Id = new Guid("51649174-7433-45bd-bbe3-81d25705a5c0"),
                             Balance = 0m,
-                            CurrencyId = new Guid("ef74e200-991d-4650-ab29-89372936184b"),
-                            UserId = new Guid("8d21a257-6623-45ee-aa20-3e02865bfb20")
+                            CurrencyId = new Guid("521cf211-eb99-4889-b3b6-ac94c34b5e13"),
+                            UserId = new Guid("d1ec617b-6266-44ff-9fce-864d057dc108")
                         });
                 });
 
