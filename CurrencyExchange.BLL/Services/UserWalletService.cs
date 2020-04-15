@@ -26,8 +26,7 @@
 
         public IReadOnlyCollection<IUserWallet> Get(Guid userId)
         {
-            // TODO: fix you mean by user probably?
-            return _context.UserWallets.Get();
+            return _context.UserWallets.Get(userId);
         }
 
         public IUserWallet GetBy(Guid id)

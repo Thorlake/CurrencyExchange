@@ -1,6 +1,7 @@
 ﻿namespace CurrencyExchange.DAL.EntityFramework.Repositories
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using AutoMapper;
     using CurrencyExchange.DAL.EntityFramework.Abstraction;
@@ -15,6 +16,14 @@
             IMapper mapper)
         : base(dbContext, mapper)
         {
+        }
+
+        public List<IUserWallet> Get(Guid userId)
+        {
+            return _dbContext.UserWallets
+                .Where(uw => uw.UserId == userId)
+                .AsEnumerable<IUserWallet>()
+                .ToList();
         }
 
         public IUserWallet Get(Guid userId, Guid currencyId)
