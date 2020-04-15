@@ -60,6 +60,7 @@
         {
             services.TryAddScoped<IUserService, UserService>();
             services.TryAddScoped<IUserWalletService, UserWalletService>();
+            services.TryAddScoped<ICurrencyService, CurrencyService>();
             services.TryAddScoped<ICurrencyRateService, CurrencyRateService>();
             services.TryAddScoped<IJobService, JobService>();
         }
