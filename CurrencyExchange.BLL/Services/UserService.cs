@@ -16,6 +16,8 @@
             _context = context;
         }
 
+        // queries
+
         public IReadOnlyCollection<IUser> Get()
         {
             return _context.Users.Get();
@@ -25,6 +27,8 @@
         {
             return _context.Users.GetBy(id);
         }
+
+        // commands
 
         public IUser Add(UserCreateArgs args)
         {
